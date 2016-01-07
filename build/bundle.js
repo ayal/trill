@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f5869670d6d31992e53a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5416e5b7ec515e888147"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -572,7 +572,7 @@
 	  //console.log('rscale',a,b,c,scale)
 	  return "M" + [a, b, c].map(function (t) {
 	    //      var v = t[0] === 0 || t[1] === 0 || t[0] === tiles || t[1] === tiles ? 0 : _.random(-scale / 2,scale / 2);
-	    var v = 50 + _.random(-scale / 2, scale / 2);
+	    var v = 100 + _.random(-scale / 2, scale / 2);
 	    if (!rmap['' + t]) {
 	      rmap['' + t] = [t[0] * scale + v, t[1] * scale + v];
 	      //rmap['' + t] = [t[0]*scale,t[1] * scale];
