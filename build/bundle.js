@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5416e5b7ec515e888147"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "c35acb4dd1ca01cba258"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -564,6 +564,10 @@
 
 	var s = Snap(300, 300);
 
+	document.getElementsByTagName("svg")[0].onclick = function () {
+	  window.open('https://www.youtube.com/watch?v=YynhRxRZNX4');
+	};
+
 	var rmap = {};
 	var scale = 20;
 	var tiles = 5;
@@ -678,7 +682,7 @@
 
 
 	// module
-	exports.push([module.id, "html,\nbody {\n  margin: 0;\n  text-align: center;\n  background: black;\n}\nsvg {\n  display: inline-block;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  right: 0;\n  left: 0;\n  margin: auto;\n}\n", ""]);
+	exports.push([module.id, "html,\nbody {\n  margin: 0;\n  text-align: center;\n  background: black;\n}\nsvg {\n  cursor: pointer;\n  display: inline-block;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  right: 0;\n  left: 0;\n  margin: auto;\n}\n", ""]);
 
 	// exports
 

@@ -5,6 +5,9 @@ var _ = require('lodash')
 
 const s = Snap(300, 300);
 
+document.getElementsByTagName("svg")[0].onclick=function(){
+    window.open('https://www.youtube.com/watch?v=YynhRxRZNX4');
+};
 
 var rmap = {};
 var scale = 20;
