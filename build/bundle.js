@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "909abc4f0a2e315edc94"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "c59e94f151448101b310"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -562,11 +562,11 @@
 	var chroma = __webpack_require__(8);
 	var _ = __webpack_require__(10);
 
-	var s = Snap(300, 300);
+	var s = Snap(200, 200);
 
 	var rmap = {};
-	var scale = 30;
-	var tiles = 8;
+	var scale = 40;
+	var tiles = 5;
 
 	var rscale = function rscale(a, b, c) {
 	  //console.log('rscale',a,b,c,scale)

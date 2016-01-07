@@ -3,12 +3,12 @@ var colorbrewer = require('colorbrewer')
 var chroma = require('chroma-js')
 var _ = require('lodash')
 
-const s = Snap(300, 300);
+const s = Snap(200, 200);
 
 
 var rmap = {};
-var scale = 30;
-var tiles = 8;
+var scale = 40;
+var tiles = 5;
 
 var rscale = function(a, b, c) {
 //console.log('rscale',a,b,c,scale)
