@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "c59e94f151448101b310"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f5869670d6d31992e53a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -562,18 +562,19 @@
 	var chroma = __webpack_require__(8);
 	var _ = __webpack_require__(10);
 
-	var s = Snap(200, 200);
+	var s = Snap(300, 300);
 
 	var rmap = {};
-	var scale = 40;
+	var scale = 20;
 	var tiles = 5;
 
 	var rscale = function rscale(a, b, c) {
 	  //console.log('rscale',a,b,c,scale)
 	  return "M" + [a, b, c].map(function (t) {
-	    var v = t[0] === 0 || t[1] === 0 || t[0] === tiles || t[1] === tiles ? 0 : _.random(0, scale);
+	    //      var v = t[0] === 0 || t[1] === 0 || t[0] === tiles || t[1] === tiles ? 0 : _.random(-scale / 2,scale / 2);
+	    var v = 50 + _.random(-scale / 2, scale / 2);
 	    if (!rmap['' + t]) {
-	      rmap['' + t] = [_.random(t[0] * scale + v, t[0] * scale), _.random(t[1] * scale + v, t[1] * scale)];
+	      rmap['' + t] = [t[0] * scale + v, t[1] * scale + v];
 	      //rmap['' + t] = [t[0]*scale,t[1] * scale];
 	    }
 	    return rmap['' + t];
@@ -632,7 +633,7 @@
 	      d: toanim,
 	      fill: cscale[i % (tiles * 2)],
 	      stroke: cscale[i % (tiles * 2)]
-	    }, 2000, mina.easeOut, function () {
+	    }, 500, mina.easeOut, function () {
 	      if (wait === 1) {
 	        _.delay(animate);
 	      }
