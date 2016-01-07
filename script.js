@@ -90,12 +90,12 @@ var animate = function() {
       d: toanim,
 	fill: cscale[i % (tiles * 2)],
 	stroke: cscale[i % (tiles * 2)]
-    }, 500, mina.easeOut, function() {
-      if (wait === 1) {
-        _.delay(animate);
+    }, 500, mina.easeinout, function() {
+      if (wait === 10) {
+          animate();
       }
       wait--;
     })
-  })
+    })
 }
 animate();

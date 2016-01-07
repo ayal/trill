@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "c35acb4dd1ca01cba258"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5a94920f255e9be53fde"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -637,9 +637,9 @@
 	      d: toanim,
 	      fill: cscale[i % (tiles * 2)],
 	      stroke: cscale[i % (tiles * 2)]
-	    }, 500, mina.easeOut, function () {
-	      if (wait === 1) {
-	        _.delay(animate);
+	    }, 500, mina.easeinout, function () {
+	      if (wait === 10) {
+	        animate();
 	      }
 	      wait--;
 	    });
