@@ -1,17 +1,19 @@
+require("./style.less");
 var colorbrewer = require('colorbrewer')
 var chroma = require('chroma-js')
 var _ = require('lodash')
 
-const s = Snap(400, 620);
+const s = Snap(480, 480);
 
 
 var rmap = {};
-var scale = 40;
+var scale = 50;
+var tiles = 10;
 
 var rscale = function(a, b, c) {
 //console.log('rscale',a,b,c,scale)
   return "M" + [a, b, c].map(function(t) {
- var v = t[0] === 0 || t[1] === 0 || t[0] === 10 || t[1] === 10 ? 0 : _.random(0,30); 
+      var v = t[0] === 0 || t[1] === 0 || t[0] === tiles || t[1] === tiles ? 0 : _.random(0,scale); 
     if (!rmap['' + t]) {
       rmap['' + t] = [_.random(t[0] * scale + v, t[0] * scale), _.random(t[1] * scale + v, t[1] * scale)];
       //rmap['' + t] = [t[0]*scale,t[1] * scale];
@@ -20,24 +22,25 @@ var rscale = function(a, b, c) {
   }).join(' L ') + " Z"
 }
 
-var colors = ["#fff7f3", "#fde0dd", "#fcc5c0", "#fa9fb5", "#f768a1", "#dd3497", "#ae017e", "#7a0177", "#49006a"];
-var cscale = chroma.scale([colors[1], colors[3]]).colors(20);
+
+var brew = _.sample(colorbrewer);
+var cscale = chroma.scale([brew[7][2],_.last(brew[7])]).colors(tiles * 2);
 
 var draw = function(a, b, c,i) {
 //console.log('draw',a,b,c,i)
     if (!a || !b || !c) {
       return;
     }
-var color = cscale[i % 20];
+    var color = cscale[i % (tiles * 2)];
 
     var path = s.path(rscale(a, b, c, scale)).attr({'strokeWidth': 1.51,'fill': color, stroke: color});
     return path;
   }
   
 var tris = [];
-_.each(_.range(0, 10), function(j) {
+_.each(_.range(0,tiles), function(j) {
 
-  _.each(_.range(0, 10), function(i) {
+  _.each(_.range(0,tiles), function(i) {
     var opts = [
       [i + 1, j + 1],
       [i, j + 1]
@@ -67,11 +70,11 @@ tris.forEach(function(t, i) {
 var animate = function() {
   var wait = ps.length;
   rmap = {};
-  var rc = _.random(0,colors.length-1);
-  var brew = _.sample(colorbrewer);
-    var cscale = chroma.scale([brew[7][2],_.last(brew[7])]).colors(20);
+
+    var brew = _.sample(colorbrewer);
+    var cscale = chroma.scale([brew[7][2],_.last(brew[7])]).colors(tiles * 2);
     
-  ps.forEach(function(p, i) {
+    ps.forEach(function(p, i) {
     var t = tris[i];
     if (!t[0] || !t[1] || !t[2]) {
       return;
@@ -81,8 +84,8 @@ var animate = function() {
 
     p.animate({
       d: toanim,
-      fill: cscale[i % 20],
-      stroke: cscale[i % 20]
+	fill: cscale[i % (tiles * 2)],
+	stroke: cscale[i % (tiles * 2)]
     }, 2000, mina.easeOut, function() {
       if (wait === 1) {
         _.delay(animate);
